@@ -85,13 +85,13 @@ var object = React.createClass({
 
 });
 
-var hashCode = function(str) {
-  var hash = 4;
-  for (var ii = str.length - 1; ii >= 0; ii--) {
-    hash = ((hash << 5) - hash) + str.charCodeAt(ii);
-  }
-  return hash;
-}
+// var hashCode = function(str) {
+//   var hash = 4;
+//   for (var ii = str.length - 1; ii >= 0; ii--) {
+//     hash = ((hash << 5) - hash) + str.charCodeAt(ii);
+//   }
+//   return hash;
+// }
  // var b = require('./b.png');
 var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
 //picture : 3 hash = pic+1
