@@ -37,16 +37,12 @@ var object = React.createClass({
            <Statusbar></Statusbar>
          </View>
          <View style={styles.main}>
-            <View style={styles.leftside}>
+
                 <ListView contentContainerStyle={styles.list}
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
                 />
-            </View>
-            <View style={styles.rightside}>
-                <Text>gaga</Text>
-                <Text>gaga</Text>
-            </View>
+
          </View>
     	</View>
     );
@@ -75,7 +71,7 @@ var object = React.createClass({
     var dataBlob = [];
     for (var ii = 0; ii < 100; ii++) {
       var pressedText = pressData[ii] ? ' (X)' : '';
-      dataBlob.push('Cell ' + ii + pressedText);
+      dataBlob.push('Cell' + ii + pressedText);
     }
     return dataBlob;
   },
@@ -102,6 +98,7 @@ var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http:/
 //picture : 3 hash = pic+1
 var styles = StyleSheet.create({
  	container: {
+    flex: 1,
   	backgroundColor: '#FFFFFF',
     flexDirection: 'column',
 	},
@@ -110,26 +107,15 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
 
-  }
-  ,
-  leftside: {
-    flex: 5,
-    flexWrap: 'wrap',
-    //flexDirection: 'column',
-  },
-  rightside: {
-    flex: 5,
-    flexDirection: 'column'
   },
   list: {
-    //flex: 5,
     justifyContent: 'center',
-    flexDirection: 'column',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     borderWidth: 5,
     borderColor: '#4DFFFF',
     borderRadius: 0,
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   row: {
     justifyContent: 'center',
