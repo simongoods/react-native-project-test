@@ -93,7 +93,6 @@ var hashCode = function(str) {
   return hash;
 }
  // var b = require('./b.png');
- // var THUMB_URLS = ['./b.png','http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg']
 var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
 //picture : 3 hash = pic+1
 var styles = StyleSheet.create({
