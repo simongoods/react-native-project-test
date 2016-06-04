@@ -49,15 +49,15 @@ var object = React.createClass({
   },
 
   _renderRow: function(rowData: string, sectionID: number, rowID: number) {
-    var rowHash = Math.abs(hashCode(rowData));
-    var imgSource = {
-      uri: THUMB_URLS[rowHash % THUMB_URLS.length],
-    };
+    //var rowHash = Math.abs(hashCode(rowData));
+    // var imgSource = {
+    //   uri: THUMB_URLS[rowHash % THUMB_URLS.length],
+    // };
     return (
       <TouchableHighlight onPress={() => this._pressRow(rowID)} underlayColor='rgba(0,0,0,0)'>
         <View>
           <View style={styles.row}>
-            <Image style={styles.thumb} source={imgSource} />
+            <Image style={styles.thumb} source={b} />
             <Text style={styles.text}>
               {rowData}
             </Text>
@@ -66,12 +66,12 @@ var object = React.createClass({
       </TouchableHighlight>
     );
   },
-
   _genRows: function(pressData: {[key: number]: boolean}): Array<string> {
     var dataBlob = [];
-    for (var ii = 0; ii < 100; ii++) {
-      var pressedText = pressData[ii] ? ' (X)' : '';
-      dataBlob.push('Cell' + ii + pressedText);
+    for (var ii = 0; ii < 3; ii++) {
+      //var pressedText = pressData[ii] ? ' (X)' : '';
+      var pressedText = text[ii];
+      dataBlob.push(pressedText);
     }
     return dataBlob;
   },
@@ -92,8 +92,10 @@ var object = React.createClass({
 //   }
 //   return hash;
 // }
- // var b = require('./b.png');
-var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
+var b = require('./b.png');
+var text = ['baba','lala','gaga'];
+//var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
+var THUMB_URLS = [require('./b.png')];
 //picture : 3 hash = pic+1
 var styles = StyleSheet.create({
  	container: {
@@ -117,10 +119,11 @@ var styles = StyleSheet.create({
     // alignItems: 'center',
   },
   row: {
+    flexDirection: 'row',
     justifyContent: 'center',
     padding: 5,
     margin: 10,
-    width: 100,
+    width: 200,
     height: 100,
     backgroundColor: '#F6F6F6',
     alignItems: 'center',
