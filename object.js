@@ -21,6 +21,7 @@ var object = React.createClass({
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
       dataSource: ds.cloneWithRows(this._genRows({})),
+      count: 0,
     };
   },
 
@@ -49,54 +50,50 @@ var object = React.createClass({
   },
 
   _renderRow: function(rowData: string, sectionID: number, rowID: number) {
-    //var rowHash = Math.abs(hashCode(rowData));
-    // var imgSource = {
-    //   uri: THUMB_URLS[rowHash % THUMB_URLS.length],
-    // };
     return (
-      <TouchableHighlight onPress={() => this._pressRow(rowID)} underlayColor='rgba(0,0,0,0)'>
-        <View>
           <View style={styles.row}>
             <Image style={styles.thumb} source={b} />
             <Text style={styles.text}>
               {rowData}
             </Text>
+            <TouchableHighlight onPress={this._pressRow}>
+              <Text>
+                使用
+              </Text>
+            </TouchableHighlight>
           </View>
-        </View>
-      </TouchableHighlight>
     );
   },
-  _genRows: function(pressData: {[key: number]: boolean}): Array<string> {
+
+  _genRows: function(num:number): Array<string> {
+    if(temp==0){
+      num = 0;
+    }
     var dataBlob = [];
-    for (var ii = 0; ii < 3; ii++) {
-      //var pressedText = pressData[ii] ? ' (X)' : '';
-      var pressedText = text[ii];
+    for (var ii = 0; ii < text.length; ii++) {
+      var pressedText = text[ii] + num;
       dataBlob.push(pressedText);
     }
+    temp++;
     return dataBlob;
   },
 
-  _pressRow: function(rowID: number) {
-    this._pressData[rowID] = !this._pressData[rowID];
-    this.setState({dataSource: this.state.dataSource.cloneWithRows(
-      this._genRows(this._pressData)
+  _pressRow: function() {
+    this.state.count = this.state.count + 1;
+     console.log(this.state.count);
+     this.setState({dataSource: this.state.dataSource.cloneWithRows(
+      this._genRows(this.state.count)
     )});
   },
 
 });
 
-// var hashCode = function(str) {
-//   var hash = 4;
-//   for (var ii = str.length - 1; ii >= 0; ii--) {
-//     hash = ((hash << 5) - hash) + str.charCodeAt(ii);
-//   }
-//   return hash;
-// }
+let temp = 0;
 var b = require('./b.png');
-var text = ['baba','lala','gaga'];
+var text = ['baba touch ','lala touch ','gaga touch ','haha touch ','caca touch ','fafa touch '];
 //var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
 var THUMB_URLS = [require('./b.png')];
-//picture : 3 hash = pic+1
+
 var styles = StyleSheet.create({
  	container: {
     flex: 1,
@@ -110,20 +107,26 @@ var styles = StyleSheet.create({
 
   },
   list: {
+    //flex: 1,
     justifyContent: 'center',
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     borderWidth: 5,
     borderColor: '#4DFFFF',
     borderRadius: 0,
     // alignItems: 'center',
   },
+  outside:{
+    flex: 1,
+    flexDirection: 'column',
+  },
   row: {
+    flex : 1,
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 5,
     margin: 10,
-    width: 200,
+//    width: 200,
     height: 100,
     backgroundColor: '#F6F6F6',
     alignItems: 'center',
