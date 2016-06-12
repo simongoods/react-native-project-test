@@ -52,15 +52,17 @@ var object = React.createClass({
   _renderRow: function(rowData: string, sectionID: number, rowID: number) {
     return (
           <View style={styles.row}>
-            <Image style={styles.thumb} source={b} />
-            <Text style={styles.text}>
-              {rowData}
-            </Text>
-            <TouchableHighlight onPress={this._pressRow}>
-              <Text>
-                使用
+            <Image style={styles.thumb} source={b}/>
+            <View style={styles.textAndButton}>
+              <Text style={styles.texts}>
+                {rowData}
               </Text>
-            </TouchableHighlight>
+              <TouchableHighlight onPress={this._pressRow} style={styles.buttonBorder}>
+                <Text>
+                  使用
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
     );
   },
@@ -90,7 +92,7 @@ var object = React.createClass({
 
 let temp = 0;
 var b = require('./b.png');
-var text = ['baba touch ','lala touch ','gaga touch ','haha touch ','caca touch ','fafa touch '];
+var text = ['測試一 touch ','測試二 touch ','測試三 touch ','測試四 touch ','測試五 touch ','測試六 touch '];
 //var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
 var THUMB_URLS = [require('./b.png')];
 
@@ -112,9 +114,9 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     flexWrap: 'wrap',
     borderWidth: 5,
-    borderColor: '#4DFFFF',
+    //borderColor: '#4DFFFF',
     borderRadius: 0,
-    // alignItems: 'center',
+//    alignItems: 'center',
   },
   outside:{
     flex: 1,
@@ -138,10 +140,28 @@ var styles = StyleSheet.create({
     width: 64,
     height: 64
   },
-  text: {
+  textAndButton:{
     flex: 1,
-    marginTop: 5,
-    fontWeight: 'bold'
+    flexDirection: 'row',
+  },
+  texts: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d0d0d0',
+    borderWidth: 10,
+//    borderColor: '#5B5B5B',
+    textAlign:'center',
+    fontStyle: 'italic',
+
+  },
+  buttonBorder: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#CCC',
   }
  });
 module.exports = object;
