@@ -9,10 +9,11 @@ var {
   View,
   AppRegistry
 } = React;
-var SliderExample = require("./SliderExample");
-var Exp = require("./Exp");
-var Item = require("./Item");
+//var SliderExample = require("./SliderExample");
+//var Exp = require("./Exp");
+//var Item = require("./Item");
 //var index = require("./index");
-var object = require("./object");
-var GridLayoutExample = require("./GridLayoutExample");
-AppRegistry.registerComponent('projecttest', () => object);
+//var object = require("./object");
+var swiper = require("./swiper");
+//var GridLayoutExample = require("./GridLayoutExample");
+AppRegistry.registerComponent('projecttest', () => swiper);
