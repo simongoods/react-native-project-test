@@ -10,6 +10,7 @@ var {
   View,
   ScrollView
 } = React;
+import Realm from 'realm';
 import { BarChart } from 'react-native-charts';
 import { Actions } from 'react-native-router-flux';
 
@@ -32,6 +33,14 @@ var object = React.createClass({
  },
 
   render() {
+    let realm = new Realm({
+     schema: [{name: 'Dog', properties: {name: 'string'}}]
+   });
+
+   realm.write(() => {
+     realm.create('Dog', {name: 'Rex'});
+   });
+
     return (
     	<View style={styles.container}>
          <View style={{flex:1}}>
@@ -92,7 +101,7 @@ var object = React.createClass({
 
 let temp = 0;
 var b = require('./b.png');
-var text = ['測試一 touch ','測試二 touch ','測試三 touch ','測試四 touch ','測試五 touch ','測試六 touch '];
+var text = [realm.objects('Dog').length,'測試二 touch ','測試三 touch ','測試四 touch ','測試五 touch ','測試六 touch '];
 //var THUMB_URLS = ['http://www3.csie.fju.edu.tw/image/teacherImg/T22.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T23.jpg','http://www3.csie.fju.edu.tw/image/teacherImg/T32.jpg'];
 var THUMB_URLS = [require('./b.png')];
 
