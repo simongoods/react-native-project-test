@@ -265,6 +265,7 @@ export default class swiper extends React.Component {
           </View>
         </Swiper>
       </View>
+
     )
   }
 }
