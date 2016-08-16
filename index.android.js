@@ -13,7 +13,7 @@ var {
 //var Exp = require("./Exp");
 //var Item = require("./Item");
 //var index = require("./index");
-//var object = require("./object");
-var swiper = require("./swiper");
+var facebookSignin = require("./facebookSignin");
+//var swiper = require("./swiper");
 //var GridLayoutExample = require("./GridLayoutExample");
-AppRegistry.registerComponent('projecttest', () => swiper);
+AppRegistry.registerComponent('projecttest', () => facebookSignin);
